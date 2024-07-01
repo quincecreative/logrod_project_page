@@ -187,7 +187,7 @@ let coordinates = ['-1.71,0.20,2.33', '3.05,0.23,-1.67', '2.21,0.22,-0.83', '2.5
 
 let projectThumbnailsSrc = ['https://assets-global.website-files.com/65f2ac5c5bdc4db205397c9e/65f831bf989211966d7c3eb5_2.webp', 'https://assets-global.website-files.com/65f2ac5c5bdc4db205397c9e/660e71bd7a05c803e90073be_9.webp', 'https://assets-global.website-files.com/65f2ac5c5bdc4db205397c9e/660e70891967766d0b7a41c2_8.webp', 'https://assets-global.website-files.com/65f2ac5c5bdc4db205397c9e/660e6fd2e2ab5633629956ba_7.webp', 'https://assets-global.website-files.com/65f2ac5c5bdc4db205397c9e/660e6e7824fce8fe497b6216_6.webp', 'https://assets-global.website-files.com/65f2ac5c5bdc4db205397c9e/65f831b50cacb21c53da36db_1.webp', 'https://assets-global.website-files.com/65f2ac5c5bdc4db205397c9e/65f831d2989211966d7c4c0f_4.webp', 'https://assets-global.website-files.com/65f2ac5c5bdc4db205397c9e/65f831c9556036c3dc1b1731_3.webp', 'https://assets-global.website-files.com/65f2ac5c5bdc4db205397c9e/65f831bf989211966d7c3eb5_2.webp', 'https://assets-global.website-files.com/65f2ac5c5bdc4db205397c9e/65f831b50cacb21c53da36db_1.webp']
 
-let projectTitlesNames = ['Versmannhaus 2.OG', 'Hanseviertel Hohe Bleichen 22 ÈG', 'Hanseviertel Große Bleichen 30 5.OG', 'Hanseviertel Grosse Bleichen 30 1.OG', 'Hafencity S-Kai Corridor', 'Hafencity Coffee Plaza East Rooftop', 'Fourth Project', 'Third Project', 'Second Project', 'First Project']
+let projectTitlesNames = ['Hanseviertel Hohe Bleichen 22 ÈG Hanseviertel Hohe Ble Hanseviertel Hohe Bleichen 22 ÈG(ger)', 'Hanseviertel Hohe Bleichen 22 ÈG', 'Hanseviertel Große Bleichen 30 5.OG', 'Hanseviertel Grosse Bleichen 30 1.OG', 'Hafencity S-Kai Corridor', 'Hafencity Coffee Plaza East Rooftop', 'Fourth Project', 'Third Project', 'Second Project', 'First Project']
 
 let projectTitlesNamesGer = ['Versmannhaus 2.OG(ger)', 'Hanseviertel Hohe Bleichen 22 ÈG(ger)', 'Hanseviertel Große Bleichen 30 5.OG(ger)', 'Hanseviertel Grosse Bleichen 30 1.OG(ger)', 'Hafencity S-Kai Corridor(ger)', 'Hafencity Coffee Plaza East Rooftop(ger)', 'Fourth Project(ger)', 'Third Project(ger)', 'Second Project (ger)', 'First Project(ger)']
 
@@ -855,7 +855,7 @@ function projectOnMouseOver(i) {
 
     // projectCursorBckg.style.mixBlendMode = "hue";
     // projectCursorBckg.style.mixBlendMode = "color";
-    // projectCursorBckg.style.mixBlendMode = "difference";
+    projectCursorBckg.style.mixBlendMode = "difference";
 
     cursorPosSet = 10
     botRigLinePos = 22
@@ -1729,39 +1729,40 @@ var createScene = async function () {
     //         sizeDeviderCon = 1
     //     }
     // }
+    ////////////////////////////////////////////////////////////////////////////////////
 
+    let mainContainerWidth = 450 * sizeDeviderCon
+    let mainContainerHeight = 200 * sizeDeviderCon
+    let mainContainerOffsetX = -225 * sizeDeviderCon
+    let mainContainerOffsetY = 100 * sizeDeviderCon
 
-    let mainContainerWidth = 350 * sizeDeviderCon
-    let mainContainerHeight = 150 * sizeDeviderCon
-    let mainContainerOffsetX = -175 * sizeDeviderCon
-    let mainContainerOffsetY = 75 * sizeDeviderCon
 
     let imageContainerWidth;
     let imageContainerHeight;
     let imageWidth;
     let imageHeight;
 
-    imageContainerWidth = imageContainerHeight = imageWidth = imageHeight = 150 * sizeDeviderCon
+    imageContainerWidth = imageContainerHeight = imageWidth = imageHeight = 200 * sizeDeviderCon
 
     ////title
-    let titleContainerWidth = 190 * sizeDeviderCon
-    let titleContainerHeight = 45 * sizeDeviderCon
+    let titleContainerWidth = 240 * sizeDeviderCon
+    let titleContainerHeight = 80 * sizeDeviderCon
     let titleContainerTop = 10 * sizeDeviderCon
     let titleContainerRight = 10 * sizeDeviderCon
-    let titleFontSize = 17 * sizeDeviderCon
+    let titleFontSize = 16 * sizeDeviderCon
     let titleLineSpasing = 0 * sizeDeviderCon
     //adress
-    let adressContainerWidth = 190 * sizeDeviderCon
+    let adressContainerWidth = 240 * sizeDeviderCon
     let adressContainerHeight = 40 * sizeDeviderCon
-    let adressContainerTop = 60 * sizeDeviderCon
+    let adressContainerTop = 90 * sizeDeviderCon
     let adressContainerRight = 10 * sizeDeviderCon
     let adressFontSize = 12 * sizeDeviderCon
     let adressLineSpacing = 0 * sizeDeviderCon
     //button
-    let buttonContainerWidth = 190 * sizeDeviderCon
+    let buttonContainerWidth = 240 * sizeDeviderCon
     let buttonContainerHeight = 50 * sizeDeviderCon
-    let buttonContainerTop = 95 * sizeDeviderCon
-    let seeDetailsWidth = 130 * sizeDeviderCon
+    let buttonContainerTop = 140 * sizeDeviderCon
+    let seeDetailsWidth = 150 * sizeDeviderCon
     let seeDetailsFontSize = 13 * sizeDeviderCon
     let seeDetailsHeight = 40 * sizeDeviderCon
 
