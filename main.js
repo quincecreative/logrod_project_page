@@ -849,7 +849,7 @@ function projectOnMouseOver(i) {
     // projCursorTL.play()
     projectCursor.style.scale = "2"
     projectCursorBckg.style.scale = "2"
-    // projectCursorBckg.style.background = "white"
+    projectCursorBckg.style.background = "white"
     // projectCursorBckg.style.mixBlendMode = "saturation";
 
 
@@ -877,7 +877,7 @@ function projectOnMouseOut(i) {
     // projCursorTL.reverse()
     projectCursor.style.scale = "1"
     projectCursorBckg.style.scale = "1"
-    // projectCursorBckg.style.background = "transparent"
+    projectCursorBckg.style.background = "transparent"
     // projectCursorBckg.style.mixBlendMode = "normal";
     cursorPosSet = 10
     botRigLinePos = 11
