@@ -203,6 +203,7 @@ let projectImagesSrc = [
     [
         "https://assets-global.website-files.com/65f2ac5c5bdc4db205397c9e/65f831bf989211966d7c3eb5_2.webp",
         "https://assets-global.website-files.com/65f2ac5c5bdc4db205397c9e/65f831bf989211966d7c3eb5_2.webp",
+        "https://assets-global.website-files.com/65f2ac5c5bdc4db205397c9e/65f831bf989211966d7c3eb5_2.webp",
         "https://assets-global.website-files.com/65f2ac5c5bdc4db205397c9e/65f831bf989211966d7c3eb5_2.webp"
     ],
     [
@@ -286,7 +287,13 @@ function showPopUp(i) {
     document.getElementById("popUpAdress").innerHTML = projectAdresses[i]
     document.getElementById("popUpText").innerHTML = projectDescriptions[i]
     for (let j = 0; j < document.getElementsByClassName("pop-up-images").length; j++) {
-        document.getElementsByClassName("pop-up-images")[j].src = projectImagesSrc[i][j]
+        console.log(typeof projectImagesSrc[i][j])
+        if (projectImagesSrc[i][j] != undefined) {
+            document.getElementsByClassName("pop-up-images")[j].style.display = "block"
+            document.getElementsByClassName("pop-up-images")[j].src = projectImagesSrc[i][j]
+        } else {
+            document.getElementsByClassName("pop-up-images")[j].style.display = "none"
+        }
     }
     setTimeout(() => {
         document.getElementById("projectPopUpContainer").style.opacity = "1"
@@ -372,7 +379,7 @@ let mapOpen = false;
 let mouseFollow = document.createElement('div');
 mouseFollow.classList.add('mouseFollow');
 mainContainerProjects.appendChild(mouseFollow);
-let mouseFollowTL = gsap.fromTo(mouseFollow, { opacity: 1, }, { opacity: 0, duration: 0.5, delay: 0 })
+let mouseFollowTL = gsap.fromTo(mouseFollow, { opacity: 0.5, }, { opacity: 0, duration: 0.5, delay: 0 })
 mouseFollowTL.pause()
 
 let mouseFollowText = document.createElement('div');
@@ -474,12 +481,17 @@ let projectsTiles = document.createElement('div');
 projectsTiles.classList.add('projects-titles');
 projBack.appendChild(projectsTiles);
 let projTitlForAppend = ["Preservation of Existing Structures", "Addressing Individual Needs", "Lean Management", "Professional Project Management", "Quality and Innovation", "Efficiency"]
-let projTitlForAppendGer = ["Bewahren vorhandener Strukturen", "Eingehen individueller Bedürfnisse", "Lean Management", "Qualität und Innovation", "Effizienz", "Professionelles Projektmanagement"]
-for (let i = 0; i < projTitlForAppend.length; i++) {
-    let projTitl = document.createElement('div');
-    projTitl.classList.add('projects-title');
-    projectsTiles.appendChild(projTitl);
-    projTitl.innerHTML = projTitlForAppend[i]
+let projTitlForAppendGer = ["Bewahren vorhandener Strukturen", "Eingehen individueller Bedürfnisse", "Lean Management", "Professionelles Projektmanagement", "Qualität und Innovation", "Effizienz",]
+let projTitlPosLeft = [500, -700, -500, 500, 1100, 1700]
+let projTitlPosTop = [100, -350, 800, -600, 800, -260]
+
+if (screen.width < screen.height) {
+    for (let i = 0; i < projTitlPosLeft.length; i++) {
+        projTitlPosLeft[i] = projTitlPosLeft[i] * 0.625
+    }
+    for (let i = 0; i < projTitlPosTop.length; i++) {
+        projTitlPosTop[i] = projTitlPosTop[i] * 0.625
+    }
 }
 
 
@@ -530,8 +542,8 @@ if (projectsLength > 30) {
 
 let projBackXCenter = projBackWidth / 2;
 let projBackYCenter = projBackHeight / 2;
-projWraper.style.width = projBack.style.width = projectsBckgImages.style.width = projBackWidth + "px"
-projWraper.style.height = projBack.style.height = projectsBckgImages.style.height = projBackHeight + "px"
+projWraper.style.width = projBack.style.width = projectsBckgImages.style.width = projectsTiles.style.width = projBackWidth + "px"
+projWraper.style.height = projBack.style.height = projectsBckgImages.style.height = projectsTiles.style.height = projBackHeight + "px"
 
 // test.style.width = projBackWidth + "px"
 // test.style.height = projBackHeight + "px"
@@ -553,16 +565,37 @@ for (let i = 0; i < numOfTransperentBckgImgs; i++) {
     if (i % 3 == 0) transparentBckgImg.style.scale = "1.1"
 }
 
+//set main titles
+for (let i = 0; i < projTitlForAppend.length; i++) {
+    let projTitl = document.createElement('div');
+    projTitl.classList.add('projects-title');
+    projectsTiles.appendChild(projTitl);
+
+    projTitl.style.position = "absolute"
+    projTitl.style.width = "1500px"
+    projTitl.style.height = "200px"
+    if (screen.width < screen.height) {
+        projTitl.style.width = "700px"
+        projTitl.style.height = "100px"
+        projTitl.style.fontSize = "25px"
+    }
+    //set title
+    projTitl.innerHTML = projTitlForAppend[i]
+    //set position
+    projTitl.style.left = (projBackXCenter + projTitlPosLeft[i] - projTitl.offsetWidth / 2) + "px"
+    projTitl.style.top = (projBackYCenter + projTitlPosTop[i] - projTitl.offsetHeight / 2) + "px"
+}
+
 
 // let projectsTiles = document.querySelector(".projects-titles")
 // projectsTiles.style.width = 700 + "px"
 // projectsTiles.style.height = 500 + "px"
-projectsTiles.style.left = (projBackXCenter - (projectsTiles.offsetWidth / 2)) + "px"
-if (screen.width > screen.height) {
-    projectsTiles.style.top = (projBackYCenter - (projectsTiles.offsetHeight / 2) - 200) + "px"
-} else {
-    projectsTiles.style.top = (projBackYCenter - (projectsTiles.offsetHeight / 2) - 100) + "px"
-}
+// projectsTiles.style.left = (projBackXCenter - (projectsTiles.offsetWidth / 2)) + "px"
+// if (screen.width > screen.height) {
+//     projectsTiles.style.top = (projBackYCenter - (projectsTiles.offsetHeight / 2) - 200) + "px"
+// } else {
+//     projectsTiles.style.top = (projBackYCenter - (projectsTiles.offsetHeight / 2) - 100) + "px"
+// }
 let projectsTilesTL = gsap.fromTo(projectsTiles, { opacity: 0, }, { opacity: 1, duration: 5, delay: 1 })
 projectsTilesTL.pause()
 //cursor
@@ -1743,15 +1776,15 @@ var createScene = async function () {
 
 
 
-    if (browser != "Chrome" && browser != "Opera" && browser != "Edge") {
-        if (screen.width > 1500) {
-            advancedTexture.idealWidth = 1500;
-            advancedTexture.renderAtIdealSize = true;
-            guiSizeDeviderPopUp = 1.125//0.75
-            guiSizeDeviderAnnotation = 0.75
-            titleLineSpasing = titleLineSpasing
-        }
-    }
+    // if (browser != "Chrome" && browser != "Opera" && browser != "Edge") {
+    //     if (screen.width > 1500) {
+    //         advancedTexture.idealWidth = 1500;
+    //         advancedTexture.renderAtIdealSize = true;
+    //         guiSizeDeviderPopUp = 1.125//0.75
+    //         guiSizeDeviderAnnotation = 0.75
+    //         titleLineSpasing = titleLineSpasing
+    //     }
+    // }
 
     //create anotation
     function createAnotationCont(posMesh, imageSrc, proTitle, proAdress, i) {
